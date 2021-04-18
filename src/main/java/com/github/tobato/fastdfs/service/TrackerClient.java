@@ -4,6 +4,7 @@ import com.github.tobato.fastdfs.domain.fdfs.GroupState;
 import com.github.tobato.fastdfs.domain.fdfs.StorageNode;
 import com.github.tobato.fastdfs.domain.fdfs.StorageNodeInfo;
 import com.github.tobato.fastdfs.domain.fdfs.StorageState;
+import com.github.tobato.fastdfs.domain.proto.CmdConstants;
 
 import java.util.List;
 
@@ -29,6 +30,25 @@ public interface TrackerClient {
      * @return
      */
     StorageNode getStoreStorage(String groupName);
+
+    /**
+     * 获取所有存储节点 get the StoreStorage Client
+     * {@link CmdConstants} 的 TRACKER_PROTO_CMD_SERVICE_QUERY_STORE_WITHOUT_GROUP_ALL 的实现
+     *
+     * @return
+     * @author xiaobaiami
+     */
+    List<StorageNode> listStoreStorages();
+
+    /**
+     * 按组获取所有存储节点 get the StoreStorage Client by group
+     * {@link CmdConstants} 的 TRACKER_PROTO_CMD_SERVICE_QUERY_STORE_WITH_GROUP_ALL 的实现
+     *
+     * @param groupName
+     * @return
+     * @author xiaobaiami
+     */
+    List<StorageNode> listStoreStorages(String groupName);
 
     /**
      * 获取读取存储节点 get the fetchStorage Client by group and filename

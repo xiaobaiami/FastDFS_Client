@@ -54,6 +54,26 @@ public class TrackerClientTest {
     }
 
     @Test
+    public void testListStoreStorages() {
+        LOGGER.debug("testListStoreStorages..");
+        List<StorageNode> storageNodes = trackerClient.listStoreStorages();
+        for (StorageNode client : storageNodes) {
+            assertNotNull(client.getInetSocketAddress());
+            LOGGER.debug("result={}", client);
+        }
+    }
+
+    @Test
+    public void testListStoreStoragesByGroup() {
+        LOGGER.debug("testListStoreStoragesByGroup..");
+        List<StorageNode> storageNodes = trackerClient.listStoreStorages(TestConstants.DEFAULT_GROUP);
+        for (StorageNode client : storageNodes) {
+            assertNotNull(client.getInetSocketAddress());
+            LOGGER.debug("result={}", client);
+        }
+    }
+
+    @Test
     public void testListGroups() {
         LOGGER.debug("testListGroups..");
         List<GroupState> list = trackerClient.listGroups();
